@@ -1,4 +1,4 @@
-package model
+package tile38
 
 import (
 	"encoding/json"

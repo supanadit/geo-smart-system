@@ -1,12 +1,14 @@
 package main
 
 import (
+	"encoding/json"
 	"fmt"
 	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
 	"github.com/go-redis/redis"
 	socketio "github.com/googollee/go-socket.io"
 	"github.com/supanadit/geosmartsystem/model"
+	"github.com/supanadit/geosmartsystem/model/tile38"
 	"log"
 )
 
@@ -17,17 +19,18 @@ func main() {
 	})
 
 	router := gin.Default()
-	router.Use(cors.New(cors.Config{
-		AllowOrigins:     []string{"http://localhost:4200"},
-		AllowMethods:     []string{"PUT", "PATCH", "POST", "GET"},
-		AllowHeaders:     []string{"Origin"},
-		ExposeHeaders:    []string{"Content-Length"},
-		AllowWebSockets:  true,
-		AllowCredentials: true,
-		AllowWildcard:    true,
-	}))
-	router.GET("/point", func(c *gin.Context) {
-		data, _ := model.FromScan(client, "sales")
+	//router.Use(cors.New(cors.Config{
+	//	AllowOrigins:     []string{"http://localhost:4200"},
+	//	AllowMethods:     []string{"PUT", "PATCH", "POST", "GET"},
+	//	AllowHeaders:     []string{"Origin"},
+	//	ExposeHeaders:    []string{"Content-Length"},
+	//	AllowWebSockets:  true,
+	//	AllowCredentials: true,
+	//	AllowWildcard:    true,
+	//}))
+	router.Use(cors.Default())
+	router.GET("/points", func(c *gin.Context) {
+		data, _ := tile38.FromScan(client, "sales")
 		c.JSON(200, data)
 	})
 	// Socket.IO Start
@@ -38,10 +41,25 @@ func main() {
 	server.OnConnect("/", func(s socketio.Conn) error {
 		s.SetContext("")
 		fmt.Println("Connected:", s.ID())
+		data, _ := tile38.FromScan(client, "sales")
+		s.Emit("points", data)
 		return nil
 	})
-	server.OnEvent("/", "message", func(s socketio.Conn, msg string) {
-		s.Emit("message", "have "+msg)
+	server.OnEvent("/", "set-points", func(s socketio.Conn, msg string) {
+		var location model.Location
+		err = json.Unmarshal([]byte(msg), &location)
+		if err != nil {
+			fmt.Println(err)
+		} else {
+			fmt.Println(location)
+			data, err := tile38.GetDataLocation(client, "sales", location.Id)
+			if err != nil {
+				fmt.Println(err)
+			} else {
+				fmt.Println(data)
+			}
+
+		}
 	})
 	server.OnEvent("/", "bye", func(s socketio.Conn) string {
 		last := s.Context().(string)

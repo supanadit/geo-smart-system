@@ -1,4 +1,4 @@
-package model
+package tile38
 
 type Tile38Object struct {
 	Id     string          `json:"id"`
