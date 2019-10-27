@@ -8,13 +8,12 @@ simulation such as Uber, Gojek, Grab, etc. The main feature of this software is 
 - [Golang](https://golang.org/)
 
 ## Todo
-- Work with Socket.IO (OK)
+- Change to SSE from Socket IO (OK)
 - Connect With Tile38 (OK)
-- CORS Support (OK)
 - Get Data From Tile38 by Command SCAN (OK)
+- Receive New Point using SSE (OK)
+- Send Realtime Point using POST Method (OK)
 - Set HOOK by GeoFencing Trigger
-- Receive New Point by HTTP GET also By Socket.IO and Trigger by Socket.IO Only
-- Send Realtime Point by Socket.IO
 - Support Nearby Trigger Feature
 - Support Enter Area Trigger Feature
 - Support Exit Area Trigger Feature
