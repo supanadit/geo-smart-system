@@ -1,2 +1,6 @@
 .idea
 .vscode
+
+/public
+
+!/public/.gitkeep

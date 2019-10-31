@@ -7,6 +7,7 @@ import (
 	"github.com/go-redis/redis"
 	"github.com/supanadit/geosmartsystem/model"
 	"github.com/supanadit/geosmartsystem/model/tile38"
+	"net/http"
 )
 
 func main() {
@@ -23,15 +24,21 @@ func main() {
 		c.JSON(200, gin.H{"status": "ok"})
 	})
 	r.GET("/stream", func(c *gin.Context) {
-		writer := c.Writer
-		writer.Header().Set("Content-Type", "text/event-stream")
-		writer.Header().Set("Cache-Control", "no-cache")
-		writer.Header().Set("Connection", "keep-alive")
-		data, _ := tile38.FromScan(client, "sales")
-		_ = sse.Encode(writer, sse.Event{
-			Event: "message",
-			Data:  data,
-		})
+		w := c.Writer
+		t := c.DefaultQuery("type", "user")
+		r := c.DefaultQuery("request", "")
+		data, _ := tile38.FromScan(client, t)
+		if r == "sse" {
+			w.Header().Set("Content-Type", "text/event-stream")
+			w.Header().Set("Cache-Control", "no-cache")
+			w.Header().Set("Connection", "keep-alive")
+			_ = sse.Encode(w, sse.Event{
+				Event: "message",
+				Data:  data,
+			})
+		} else {
+			c.JSON(http.StatusOK, data)
+		}
 	})
 	r.Static("/public", "./public")
 	_ = r.Run()
