@@ -2,5 +2,7 @@
 .vscode
 
 /public
+/assets
 
 !/public/.gitkeep
+!/assets/.gitkeep

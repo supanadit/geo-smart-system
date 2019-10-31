@@ -16,7 +16,14 @@ func main() {
 	})
 	r := gin.Default()
 	r.Use(cors.Default())
-	r.POST("/set-points", func(c *gin.Context) {
+	r.GET("/get/unique/id", func(c *gin.Context) {
+		var location model.Location
+		_ = c.BindJSON(&location)
+		c.Writer.Header().Set("Content-Type", "application/json")
+		client.Do("SET", location.Type, location.Id, "POINT", location.Lat, location.Lng)
+		c.JSON(200, gin.H{"status": "ok"})
+	})
+	r.POST("/set/point", func(c *gin.Context) {
 		var location model.Location
 		_ = c.BindJSON(&location)
 		c.Writer.Header().Set("Content-Type", "application/json")
@@ -41,5 +48,6 @@ func main() {
 		}
 	})
 	r.Static("/public", "./public")
+	r.Static("/assets", "./assets")
 	_ = r.Run()
 }
