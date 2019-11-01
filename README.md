@@ -1,3 +1,5 @@
+![Geo Smart Logo](http://supanadit.com/wp-content/uploads/2019/11/geo.png)
+
 # GEO Smart System
 This is Tile38 Implementation for Golang, and also this software has a purpose to be real time tracking system 
 simulation such as Uber, Gojek, Grab, etc. The main feature of this software is that it must **lightweight**, 
