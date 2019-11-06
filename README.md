@@ -21,7 +21,7 @@ simulation such as Uber, Gojek, Grab, etc. The main feature of this software is 
 - Support Nearby Trigger Feature
 - Support Enter Area Trigger Feature
 - Support Exit Area Trigger Feature
-- Documentation ( On Progress )
+- [Documentation](https://github.com/supanadit/geosmartdocumentation) ( On Progress )
 
 ## License
 Copyright 2019 Supan Adit Pratama
