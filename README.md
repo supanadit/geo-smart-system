@@ -23,6 +23,10 @@ simulation such as Uber, Gojek, Grab, etc. The main feature of this software is 
 - Support Exit Area Trigger Feature
 - [Documentation](https://github.com/supanadit/geosmartdocumentation) ( On Progress )
 
+## Notes
+
+This project will always maintained, but the problem is that it will slowly developed because the only contributor is my self, this project could be customize for any requirement tracking system
+
 ## License
 Copyright 2019 Supan Adit Pratama
 
