@@ -1,4 +1,4 @@
-![Geo Smart Logo](http://supanadit.com/wp-content/uploads/2019/11/geo.png)
+![Geo Smart Logo](http://supanadit.com/wp-content/uploads/2019/11/Geo-Smart-Logo.png)
 
 # GEO Smart System
 This is Tile38 Implementation for Golang, and also this software has a purpose to be real time tracking system 
