@@ -22,6 +22,7 @@ simulation such as Uber, Gojek, Grab, etc. The main feature of this software is 
 - Support Enter Area Trigger Feature
 - Support Exit Area Trigger Feature
 - [Documentation](https://github.com/supanadit/geosmartdocumentation) ( On Progress )
+- Firebase Integration
 
 ## Notes
 
