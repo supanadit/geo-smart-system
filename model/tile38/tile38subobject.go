@@ -4,7 +4,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"github.com/go-redis/redis"
-	"github.com/supanadit/geosmartsystem/model"
+	"github.com/supanadit/geo-smart-system/model"
 	"strconv"
 )
 
