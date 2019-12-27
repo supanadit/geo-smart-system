@@ -17,16 +17,15 @@ simulation such as Uber, Gojek, Grab, etc. The main feature of this software is 
 - Get Data From Tile38 by Command SCAN (OK)
 - Receive New Point using SSE (OK)
 - Send Realtime Point using POST Method (OK)
-- Set HOOK by GeoFencing Trigger
-- Support Nearby Trigger Feature
-- Support Enter Area Trigger Feature
-- Support Exit Area Trigger Feature
-- [Documentation](https://github.com/supanadit/geosmartdocumentation) ( On Progress )
-- Firebase Integration
+- Set HOOK by GeoFencing Trigger ( OK )
+- Support Nearby Trigger Feature ( OK )
+- Support Enter Area Trigger Feature ( OK )
+- Support Exit Area Trigger Feature ( OK )
+- [Documentation](https://github.com/supanadit/geosmartdocumentation) ( In Progress )
 
 ## Notes
 
-This project will always maintained, but the problem is that it will slowly developed because the only contributor is my self, this project could be customize for any requirement tracking system
+This project will always maintained, but the problem is that it will slowly developed because the only contributor just my self, this project can be customize for any model of tracking system, and it's open for any contributor who really want to help this project
 
 ## License
 Copyright 2019 Supan Adit Pratama
