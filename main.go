@@ -12,6 +12,7 @@ import (
 	"github.com/supanadit/geo-smart-system/model/tile38"
 	"log"
 	"net/http"
+	"strings"
 )
 
 func main() {
@@ -86,7 +87,8 @@ func main() {
 		hookID := "HOOK-" + xid.New().String()
 		fmt.Printf("Set HOOK with ID : %s \n", hookID)
 		hookURL := "http://192.168.99.1:" + port + "/detection/call"
-		client.Do("SETHOOK", hookID, hookURL, "NEARBY", detection.Type, "FENCE", "DETECT", "enter", "COMMANDS", "set", "POINT", detection.Lat, detection.Lng)
+		trigger := strings.Join(detection.TriggerType, ",")
+		client.Do("SETHOOK", hookID, hookURL, "NEARBY", detection.Type, "FENCE", "DETECT", trigger, "COMMANDS", "set", "POINT", detection.Lat, detection.Lng)
 		var status map[string]interface{}
 		var httpStatus int
 		if err != nil {
