@@ -85,26 +85,35 @@ func main() {
 		var detection model.Detection
 		err := c.BindJSON(&detection)
 		hookID := "HOOK-" + xid.New().String()
-		fmt.Printf("Set HOOK with ID : %s \n", hookID)
-		hookURL := "http://192.168.99.1:" + port + "/detection/call"
+		hookURL := "http://192.168.99.1:" + port + "/detection/call?hook=" + hookID
 		trigger := strings.Join(detection.TriggerType, ",")
-		client.Do("SETHOOK", hookID, hookURL, "NEARBY", detection.Type, "FENCE", "DETECT", trigger, "COMMANDS", "set", "POINT", detection.Lat, detection.Lng)
 		var status map[string]interface{}
 		var httpStatus int
-		if err != nil {
-			status = gin.H{"status": "Unknown Error"}
-			httpStatus = http.StatusInternalServerError
+		if trigger == "" {
+			status = gin.H{"status": "Please include trigger type such as 'enter','cross','exit','inside' or 'outside'"}
+			httpStatus = http.StatusBadRequest
 		} else {
-			status = gin.H{"status": "Ok"}
-			httpStatus = http.StatusOK
+			client.Do("SETHOOK", hookID, hookURL, "NEARBY", detection.Type, "FENCE", "DETECT", trigger, "COMMANDS", "set", "POINT", detection.Lat, detection.Lng)
+			if err != nil {
+				status = gin.H{"status": "Unknown Error"}
+				httpStatus = http.StatusInternalServerError
+			} else {
+				status = gin.H{"status": "Ok"}
+				httpStatus = http.StatusOK
+			}
 		}
 		c.Writer.Header().Set("Content-Type", "application/json")
 		c.JSON(httpStatus, status)
 	})
 
 	r.GET("/detection/call", func(c *gin.Context) {
-		fmt.Println("Called")
-		c.JSON(200, gin.H{"status": "test"})
+		hookID := c.Query("hook")
+		if hookID == "" {
+			c.JSON(http.StatusBadRequest, gin.H{"status": "Wrong Request"})
+		} else {
+			client.Do("DELHOOK", hookID)
+			c.JSON(http.StatusOK, gin.H{"status": "OK"})
+		}
 	})
 
 	r.GET("/ws", func(c *gin.Context) {
