@@ -2,6 +2,7 @@
 
 # GEO Smart System
 
+[![Build Status](https://travis-ci.com/supanadit/geo-smart-system.svg?branch=master)](https://travis-ci.com/supanadit/geo-smart-system)
 [![Go Report Card](https://goreportcard.com/badge/github.com/supanadit/geo-smart-system)](https://goreportcard.com/report/github.com/supanadit/geo-smart-system)
 
 This is Tile38 Implementation for Golang, and also this software has a purpose to be real time tracking system 
