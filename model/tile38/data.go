@@ -7,12 +7,12 @@ import (
 	"strconv"
 )
 
-type Tile38Data struct {
-	Object []Tile38Object `json:"data"`
+type Data struct {
+	Object []Object `json:"data"`
 }
 
-func FromScan(client *redis.Client, name string) (Tile38Data, error) {
-	var tile38Data Tile38Data
+func FromScan(client *redis.Client, name string) (Data, error) {
+	var tile38Data Data
 	var err error
 	v, err := client.Do("SCAN", name).Result()
 	if err == nil {
@@ -28,8 +28,8 @@ func FromScan(client *redis.Client, name string) (Tile38Data, error) {
 					contentName := name + ".1"
 					id := gjson.Get(jsonConverted, idName)
 					content := gjson.Get(jsonConverted, contentName)
-					var tile38Object Tile38Object
-					var tile38SubObject Tile38SubObject
+					var tile38Object Object
+					var tile38SubObject SubObject
 					err = json.Unmarshal([]byte(content.String()), &tile38SubObject)
 					if err == nil {
 						tile38Object.Id = id.String()
@@ -43,7 +43,7 @@ func FromScan(client *redis.Client, name string) (Tile38Data, error) {
 	return tile38Data, err
 }
 
-func (tile38Data Tile38Data) ToJsonString() (string, error) {
+func (tile38Data Data) ToJsonString() (string, error) {
 	var err error
 	data, err := json.Marshal(tile38Data)
 	return string(data), err
