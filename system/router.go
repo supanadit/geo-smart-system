@@ -61,11 +61,12 @@ func Router(r *gin.Engine, client *redis.Client) {
 	})
 
 	r.GET("/point/get/stream", func(c *gin.Context) {
-		w := c.Writer
-		t := c.DefaultQuery("type", "user")
-		data, _ := tile38.FromScan(client, t)
-
-		_ = sse.Encode(w, sse.Event{
+		writer := c.Writer
+		writer.Header().Set("Content-Type", "text/event-stream")
+		writer.Header().Set("Cache-Control", "no-cache")
+		writer.Header().Set("Connection", "keep-alive")
+		data, _ := tile38.FromScan(client, "user")
+		_ = sse.Encode(writer, sse.Event{
 			Event: "message",
 			Data:  data,
 		})
