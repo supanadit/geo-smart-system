@@ -75,7 +75,7 @@ func Router(r *gin.Engine, client *redis.Client) {
 		var detection model.Detection
 		err := c.BindJSON(&detection)
 		hookID := "HOOK-" + xid.New().String()
-		hookURL := system.GetTile38HookURL(hookID)
+		hookURL := GetTile38HookURL(hookID)
 		trigger := strings.Join(detection.TriggerType, ",")
 		var status map[string]interface{}
 		var httpStatus int
