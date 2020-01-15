@@ -4,6 +4,7 @@
 
 [![Build Status](https://travis-ci.com/supanadit/geo-smart-system.svg?branch=master)](https://travis-ci.com/supanadit/geo-smart-system)
 [![Go Report Card](https://goreportcard.com/badge/github.com/supanadit/geo-smart-system)](https://goreportcard.com/report/github.com/supanadit/geo-smart-system)
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/c184e682b4944bb2b68a665f47869cd3)](https://www.codacy.com/manual/supanadit/geo-smart-system?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=supanadit/geo-smart-system&amp;utm_campaign=Badge_Grade)
 
 This is Tile38 Implementation for Golang, and also this software has a purpose to be real time tracking system 
 simulation such as Uber, Gojek, Grab, etc. The main feature of this software is the real time tracking system also must be   **lightweight**, 
