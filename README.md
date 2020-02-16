@@ -1,4 +1,4 @@
-![Geo Smart Logo](http://supanadit.com/wp-content/uploads/2019/11/Geo-Smart-Logo.png)
+![Geo Smart Logo](https://supanadit.com/public/storage/image/geo_smart_logo.png)
 
 # GEO Smart System
 
