@@ -1,5 +1,3 @@
-![Geo Smart Logo](https://supanadit.com/public/storage/image/geo_smart_logo.png)
-
 # GEO Smart System
 
 [![Build Status](https://travis-ci.com/supanadit/geo-smart-system.svg?branch=master)](https://travis-ci.com/supanadit/geo-smart-system)
@@ -9,8 +7,6 @@
 This is Tile38 Implementation for Golang, and also this software has a purpose to be real time tracking system 
 simulation such as Uber, Gojek, Grab, etc. The main feature of this software is the real time tracking system also must be   **lightweight**, 
 **less memory usage**, and **fast**, for the live map it has integrate with [Geo Smart Map](https://github.com/supanadit/geosmartmap) and [Geo Smart App](https://github.com/supanadit/geosmartapp)
-
-![Workflow](https://supanadit.com/public/storage/image/geo_smart_workflow.png)
 
 ## Requirements
 - [Tile38 Server](https://tile38.com/)
