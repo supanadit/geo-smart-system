@@ -26,4 +26,4 @@ simulation such as Uber, Gojek, Grab, etc. The main feature of this software is 
 
 ## Notes
 
-This project will always maintained, but the problem is that it will slowly developed because the only contributor just my self, this project can be customize for any model of tracking system, and it's open for any contributor who really want to help this project
+This project will always be maintained, but the problem is, it will slowly maintained because my self is the only contributor, i want this project customizable for any model of tracking system, and i still finding contributor to help this project grow up and keep alive also straight forward following the mission.
