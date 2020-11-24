@@ -19,5 +19,6 @@ func main() {
 	// Call Router
 	system.Router(r, client)
 	// Run Server
-	_ = r.Run(fmt.Sprintf(":%s", system.ServerPort))
+	// _ = r.Run(fmt.Sprintf(":%s", system.ServerPort))
+	_ = r.RunTLS(fmt.Sprintf(":%s", system.ServerPort), "./server.crt", "./server.key")
 }
