@@ -1,11 +1,13 @@
 package main
 
 import (
-	"fmt"
 	"github.com/gin-contrib/cors"
+	"github.com/gin-gonic/autotls"
 	"github.com/gin-gonic/gin"
 	"github.com/go-redis/redis"
 	"github.com/supanadit/geo-smart-system/system"
+	"golang.org/x/crypto/acme/autocert"
+	"log"
 )
 
 func main() {
@@ -19,5 +21,11 @@ func main() {
 	// Call Router
 	system.Router(r, client)
 	// Run Server
-	_ = r.Run(fmt.Sprintf(":%s", system.ServerPort))
+	m := autocert.Manager{
+		Prompt:     autocert.AcceptTOS,
+		HostPolicy: autocert.HostWhitelist(),
+		Cache:      autocert.DirCache("/var/www/.cache"),
+	}
+
+	log.Fatal(autotls.RunWithManager(r, &m))
 }
