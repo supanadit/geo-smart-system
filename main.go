@@ -6,7 +6,6 @@ import (
 	"github.com/gin-gonic/gin"
 	"github.com/go-redis/redis"
 	"github.com/supanadit/geo-smart-system/system"
-	"log"
 )
 
 func main() {
@@ -23,5 +22,5 @@ func main() {
 	_ = r.Run(fmt.Sprintf(":%s", system.ServerPort))
 	// _ = r.RunTLS(fmt.Sprintf(":%s", system.ServerPort), "./server.crt", "./server.key")
 	//err := http.ListenAndServeTLS(fmt.Sprintf(":%s", system.ServerPort), "cert.pem", "key.pem", nil)
-	log.Fatal(err)
+	//log.Fatal(err)
 }
