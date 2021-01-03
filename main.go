@@ -7,7 +7,6 @@ import (
 	"github.com/go-redis/redis"
 	"github.com/supanadit/geo-smart-system/system"
 	"log"
-	"net/http"
 )
 
 func main() {
@@ -21,8 +20,8 @@ func main() {
 	// Call Router
 	system.Router(r, client)
 	// Run Server
-	// _ = r.Run(fmt.Sprintf(":%s", system.ServerPort))
+	_ = r.Run(fmt.Sprintf(":%s", system.ServerPort))
 	// _ = r.RunTLS(fmt.Sprintf(":%s", system.ServerPort), "./server.crt", "./server.key")
-	err := http.ListenAndServeTLS(fmt.Sprintf(":%s", system.ServerPort), "cert.pem", "key.pem", nil)
+	//err := http.ListenAndServeTLS(fmt.Sprintf(":%s", system.ServerPort), "cert.pem", "key.pem", nil)
 	log.Fatal(err)
 }
