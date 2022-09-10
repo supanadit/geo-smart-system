@@ -4,7 +4,7 @@ import "fmt"
 
 const (
 	// Tile 38
-	Tile38Address = "127.0.0.1"
+	Tile38Address = "tile38_database"
 	Tile38Port    = "9851"
 	// Server Port
 	ServerPort = "8080"
